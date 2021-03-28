@@ -1,6 +1,10 @@
 from core.number_holder import NumberHolder
 import pytest
 
+from unittest.mock import MagicMock, patch
+import datetime
+
+
 def test_adding_of_number():
     holder = NumberHolder(100)
     holder.add(5)
@@ -46,3 +50,31 @@ def test_division_by_zero():
     holder = NumberHolder(1)
     with pytest.raises(ZeroDivisionError):
         holder.divide(0)
+
+
+def test_slow_adding():
+    holder = NumberHolder(100)
+    start_time = datetime.datetime.now()
+    holder.slow_adding(5)
+    end_time = datetime.datetime.now()
+    time_diff = end_time - start_time
+
+    assert time_diff.seconds == 5
+
+
+def test_mocking_of_slow_adding():
+    holder = NumberHolder(100)
+    mock_obj = MagicMock()
+    mock_obj.return_value = holder.add(3)
+
+    start_time = datetime.datetime.now()
+    with patch("core.number_holder.NumberHolder.slow_adding", mock_obj):
+        holder.slow_adding(3)
+
+        end_time = datetime.datetime.now()
+        time_diff = end_time - start_time
+        assert time_diff.seconds == 0
+
+        assert holder.number == 103
+
+

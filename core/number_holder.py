@@ -1,3 +1,4 @@
+import time
 
 
 class NumberHolder():
@@ -22,5 +23,10 @@ class NumberHolder():
 
     def reminder(self, number_for_reminder):
         self.number %= number_for_reminder
+        return self.number
+
+    def slow_adding(self, number_to_add):
+        time.sleep(number_to_add)
+        self.number += number_to_add
         return self.number
 
