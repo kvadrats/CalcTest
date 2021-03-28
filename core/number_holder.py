@@ -29,4 +29,3 @@ class NumberHolder():
         time.sleep(number_to_add)
         self.number += number_to_add
         return self.number
-

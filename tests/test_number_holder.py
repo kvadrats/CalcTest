@@ -62,6 +62,16 @@ def test_slow_adding():
     assert time_diff.seconds == 5
 
 
+def test_slow_adding_for_multithreading():
+    holder = NumberHolder(100)
+    start_time = datetime.datetime.now()
+    holder.slow_adding(5)
+    end_time = datetime.datetime.now()
+    time_diff = end_time - start_time
+
+    assert time_diff.seconds == 5
+
+
 def test_mocking_of_slow_adding():
     holder = NumberHolder(100)
     mock_obj = MagicMock()
