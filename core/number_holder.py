@@ -23,3 +23,4 @@ class NumberHolder():
     def reminder(self, number_for_reminder):
         self.number %= number_for_reminder
         return self.number
+
