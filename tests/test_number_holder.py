@@ -13,21 +13,34 @@ def test_subtracting_of_number():
     assert holder == 100-5
 
 
-def test_division():
-    raise NotImplementedError()
+def test_multiplying_of_number():
+    holder = NumberHolder(100)
+    holder.multiply(5)
+    assert holder.number == 100*5
 
 
-def test_multiplication():
-    raise NotImplementedError()
+def test_dividing_of_number():
+    holder = NumberHolder(100)
+    holder.divide(5)
+    assert holder == 100/5
 
 
 def test_get_division_remainder():
-    raise NotImplementedError()
+    holder = NumberHolder(100)
+    holder.reminder(6)
+    assert holder == 100%6
 
 
 def test_all_actions_in_row():
-    raise NotImplementedError()
+    holder = NumberHolder(100)
+    holder.add(5)
+    holder.subtract(6)
+    holder.multiply(2)
+    holder.add(2)
+    holder.divide(100)
+
+    assert holder == 2
 
 
-def test_division_by_zero():
+def test_divisiom_by_zero():
     raise NotImplementedError()
